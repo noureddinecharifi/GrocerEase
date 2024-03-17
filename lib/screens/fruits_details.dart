@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grocer_ease/models/fruits_data.dart';
+import 'package:grocer_ease/provider/fruit_provider.dart';
+import 'package:grocer_ease/screens/homescreen.dart';
 import 'package:grocer_ease/utils/constants.dart';
+import 'package:provider/provider.dart';
 
 class FruitsDetails extends StatefulWidget {
   const FruitsDetails({super.key, required this.fruit});
@@ -25,6 +28,13 @@ class _FruitsDetailsState extends State<FruitsDetails> {
       if (_counter > 0) {
         _counter--;
       }
+    });
+  }
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _counter = widget.fruit.count;
     });
   }
 
@@ -228,9 +238,29 @@ class _FruitsDetailsState extends State<FruitsDetails> {
                       style: const TextStyle(fontSize: 20, color: Colors.white),
                     )),
                 const SizedBox(
-                  width: 175,
+                  width: 120,
                 ),
-                ElevatedButton(onPressed: () {}, child: const Text("haha"))
+                ElevatedButton(
+                  onPressed: () {
+                    final cart =
+                        Provider.of<CartProvider>(context, listen: false);
+
+                    widget.fruit.setCount(_counter);
+                    cart.addItem(widget.fruit);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('${widget.fruit.name} added to cart!'),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const HomeScreen(initialTabIndex: 2)));
+                  },
+                  child: const Text('Add to Cart'),
+                ),
               ],
             ),
           )
