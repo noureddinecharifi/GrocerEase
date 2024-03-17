@@ -1,0 +1,1 @@
+const String me = 'assets/images/me.png';
