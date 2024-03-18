@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grocer_ease/provider/fruit_provider.dart';
-import 'package:grocer_ease/screens/homescreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:grocer_ease/screens/onboarding_screen.dart';
 
 import 'provider/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +34,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'GrocerEase',
         theme: Provider.of<ThemeProvider>(context).themeData,
-        home: const HomeScreen(initialTabIndex: 0));
+        home: const OnBoardingScreen());
   }
 }

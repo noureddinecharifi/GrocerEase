@@ -7,9 +7,9 @@ import 'package:provider/provider.dart';
 import '../provider/fruit_provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  final int initialTabIndex;
-
   const HomeScreen({super.key, required this.initialTabIndex});
+
+  final int initialTabIndex;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -17,6 +17,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedTab = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      selectedTab = widget.initialTabIndex;
+    });
+  }
 
   // this is a function
   Widget getTabView(int selectedTab) {
@@ -28,14 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
       default:
         return const SizedBox();
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      selectedTab = widget.initialTabIndex;
-    });
   }
 
   @override
