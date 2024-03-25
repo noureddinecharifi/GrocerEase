@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grocer_ease/provider/fruit_provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grocer_ease/screens/onboarding_screen.dart';
+import 'package:grocer_ease/routes/go_router.dart';
+
+
 
 import 'provider/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -30,10 +32,12 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
     );
 
-    return MaterialApp(
+    return MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'GrocerEase',
         theme: Provider.of<ThemeProvider>(context).themeData,
-        home: const OnBoardingScreen());
+        routerConfig: router,
+        
+        );
   }
 }
