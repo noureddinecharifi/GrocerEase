@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocer_ease/screens/homescreen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grocer_ease/utils/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -20,7 +20,7 @@ class OnBoardingScreen extends StatelessWidget {
           children: [
             Container(
               clipBehavior: Clip.antiAlias,
-              height: MediaQuery.sizeOf(context).height * 0.4,
+              height: MediaQuery.sizeOf(context).height * 0.6,
               width: double.infinity,
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(30)),
@@ -28,9 +28,6 @@ class OnBoardingScreen extends StatelessWidget {
                 grocer1,
                 fit: BoxFit.cover,
               ),
-            ),
-            const SizedBox(
-              height: 20,
             ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -42,14 +39,14 @@ class OnBoardingScreen extends StatelessWidget {
                     activeDotColor: Theme.of(context).colorScheme.secondary,
                     spacing: 8.0,
                     radius: 20.0,
-                    dotWidth: 12.0,
+                    dotWidth: 6.0,
                     dotHeight: 6.0,
                   ),
                   onDotClicked: (index) {}),
             ),
             SizedBox(
               width: 300,
-              height: 300,
+              height: 150,
               child: PageView.builder(
                   controller: controller,
                   itemCount: groceryAppDescriptions.length,
@@ -83,15 +80,7 @@ class OnBoardingScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomeScreen(
-                              initialTabIndex: 0,
-                            ),
-                          ));
-                    },
+                    onPressed: () => context.go('/homePage'),
                     child: Text(
                       "Continue",
                       style: Theme.of(context).textTheme.bodyMedium,

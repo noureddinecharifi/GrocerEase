@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocer_ease/models/fruits_data.dart';
 import 'package:grocer_ease/provider/fruit_provider.dart';
-import 'package:grocer_ease/screens/homescreen.dart';
 import 'package:grocer_ease/utils/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -30,6 +29,7 @@ class _FruitsDetailsState extends State<FruitsDetails> {
       }
     });
   }
+
   @override
   void initState() {
     super.initState();
@@ -253,11 +253,6 @@ class _FruitsDetailsState extends State<FruitsDetails> {
                         duration: const Duration(seconds: 2),
                       ),
                     );
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const HomeScreen(initialTabIndex: 2)));
                   },
                   child: const Text('Add to Cart'),
                 ),

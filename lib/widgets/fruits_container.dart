@@ -6,16 +6,21 @@ import '../models/fruits_data.dart';
 class FruitCard extends StatelessWidget {
   final Fruit fruit;
 
-  const FruitCard({super.key, required this.fruit,});
+  const FruitCard({
+    super.key,
+    required this.fruit,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-         Navigator.push(
+        Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FruitsDetails(fruit: fruit,),
+            builder: (context) => FruitsDetails(
+              fruit: fruit,
+            ),
           ),
         );
       },
@@ -47,10 +52,8 @@ class FruitCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            fruit.name,
-                            style: Theme.of(context).textTheme.bodyMedium
-                          ),
+                          Text(fruit.name,
+                              style: Theme.of(context).textTheme.bodyMedium),
                           const SizedBox(height: 4.0),
                           Text(
                             '${fruit.calories} Kcal',
