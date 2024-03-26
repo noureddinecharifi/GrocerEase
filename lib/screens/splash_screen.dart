@@ -48,7 +48,7 @@ class SplashScreen extends StatelessWidget {
                                   backgroundColor: Theme.of(context)
                                       .colorScheme
                                       .onBackground),
-                              onPressed: ()=> context.go('/LoginOrRegister'),
+                              onPressed: ()=> context.go('/AuthPage'),
                               child: const Text('Create an account > '))),
                       GestureDetector(
                           onTap: ()=> context.go('/LoginOrRegister'),
