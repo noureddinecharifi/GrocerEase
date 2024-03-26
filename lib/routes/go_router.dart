@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:grocer_ease/auth/auth_page.dart';
 import 'package:grocer_ease/auth/login_or_signup.dart';
 import 'package:grocer_ease/screens/homescreen.dart';
 import 'package:grocer_ease/screens/sign_in.dart';
@@ -12,7 +13,11 @@ final GoRouter router = GoRouter(
       path: '/',
       builder: (context, state) => const SplashScreen(),
     ),
-     GoRoute(
+    GoRoute(
+      path: '/AuthPage',
+      builder: (context, state) => const AuthPage(),
+    ),
+    GoRoute(
       path: '/LoginOrRegister',
       builder: (context, state) => const LoginOrRegister(),
     ),

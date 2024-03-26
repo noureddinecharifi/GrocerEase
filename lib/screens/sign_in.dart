@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:grocer_ease/utils/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
+import '../helpers/functions.dart';
 import '../widgets/custom_input.dart';
 import '../widgets/social_media.dart';
 
 class SignIn extends StatefulWidget {
-  final void Function()? onTap;
   const SignIn({super.key, this.onTap});
+
+  final void Function()? onTap;
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -16,6 +18,25 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+
+  void login() async {
+    showDialog(
+        context: context,
+        builder: (context) => const Center(
+              child: CircularProgressIndicator(),
+            ));
+    //try to sign in
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      if (context.mounted) Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      displayMessage(e.code, context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,30 +65,33 @@ class _SignInState extends State<SignIn> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          children: [
-                            CustomInput(
-                              controller: emailController,
-                              prefixIcon: Icons.person,
-                              validator: (p0) {
-                                return null;
-                              },
-                              hintText: 'User Email',
-                              obscure: false,
-                            ),
-                            CustomInput(
-                              controller: passwordController,
-                              prefixIcon: Icons.lock,
-                              validator: (p0) {
-                                return null;
-                              },
-                              hintText: 'Password',
-                              obscure: true,
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                          ],
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            children: [
+                              CustomInput(
+                                controller: emailController,
+                                prefixIcon: Icons.person,
+                                validator: (p0) {
+                                  return null;
+                                },
+                                hintText: 'User Email',
+                                obscure: false,
+                              ),
+                              CustomInput(
+                                controller: passwordController,
+                                prefixIcon: Icons.lock,
+                                validator: (p0) {
+                                  return null;
+                                },
+                                hintText: 'Password',
+                                obscure: true,
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(
                             width: double.infinity,
@@ -81,7 +105,7 @@ class _SignInState extends State<SignIn> {
                                     backgroundColor: Theme.of(context)
                                         .colorScheme
                                         .onBackground),
-                                onPressed: ()=> context.go('/homePage'),
+                                onPressed: login,
                                 child: const Text('Sign in > '))),
                         const SizedBox(
                           height: 32,
@@ -108,7 +132,7 @@ class _SignInState extends State<SignIn> {
                             ),
                           ],
                         ),
-                         const SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         SocialIconsRow(

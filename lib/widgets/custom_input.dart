@@ -35,8 +35,12 @@ class CustomInput extends StatelessWidget {
           controller: controller,
           obscureText: obscure,
           decoration: InputDecoration(
+            focusedErrorBorder: OutlineInputBorder(
+               borderSide: const BorderSide(color: Colors.red, width: 2),
+              borderRadius: BorderRadius.circular(20),
+            ),
             errorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.red),
+                borderSide: const BorderSide(color: Colors.red, width: 2),
                 borderRadius: BorderRadius.circular(20)),
             hintStyle: Theme.of(context)
                 .textTheme
