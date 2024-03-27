@@ -28,9 +28,10 @@ class FruitCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: Colors.grey.shade50,
+          color: Theme.of(context).colorScheme.background,
         ),
         child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Center(
@@ -38,41 +39,63 @@ class FruitCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    fruit.image,
-                    width: 85,
-                    height: 85,
+                  Container(
+                    height: 115,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white.withOpacity(0.5),
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        fruit.image,
+                        width: 95,
+                        height: 95,
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 8.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                  const SizedBox(height: 15.0),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
                         children: [
                           Text(fruit.name,
-                              style: Theme.of(context).textTheme.bodyMedium),
-                          const SizedBox(height: 4.0),
-                          Text(
-                            '${fruit.calories} Kcal',
-                          ),
-                          Text(
-                            '${fruit.pricePerKilogram.toStringAsFixed(2)}MAD/Kg',
-                          ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(fontWeight: FontWeight.bold)),
                         ],
                       ),
-                      Container(
-                        height: 25,
-                        width: 25,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Theme.of(context).colorScheme.primary),
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ),
+                      const SizedBox(height: 4.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Icon(
+                                Icons.local_fire_department_rounded,
+                                size: 15,
+                                color: Colors.green,
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text('${fruit.calories}Kcal',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith()),
+                            ],
+                          ),
+                          Text('${fruit.pricePerKilogram.toStringAsFixed(2)}Dh',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith()),
+                        ],
                       )
                     ],
                   ),

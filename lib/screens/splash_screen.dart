@@ -6,9 +6,7 @@ import 'package:grocer_ease/utils/constants.dart';
 import '../widgets/social_media.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen(
-      {super.key});
-
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +46,10 @@ class SplashScreen extends StatelessWidget {
                                   backgroundColor: Theme.of(context)
                                       .colorScheme
                                       .onBackground),
-                              onPressed: ()=> context.go('/AuthPage'),
+                              onPressed: () => context.go('/AuthPage'),
                               child: const Text('Create an account > '))),
                       GestureDetector(
-                          onTap: ()=> context.go('/LoginOrRegister'),
+                          onTap: () => context.go('/LoginOrRegister'),
                           child: const Text('Already have an account')),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
