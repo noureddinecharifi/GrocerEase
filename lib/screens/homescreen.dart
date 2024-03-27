@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:grocer_ease/screens/cart_tab.dart';
 import 'package:grocer_ease/screens/home_tab.dart';
+import 'package:grocer_ease/screens/morescreen.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/fruit_provider.dart';
@@ -33,6 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
         return const HomeTabView();
       case 2:
         return const CartScreen();
+      case 3:
+        return const MoreScreen();
+
       default:
         return const SizedBox();
     }
@@ -51,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
               left: MediaQuery.sizeOf(context).width * 0.63,
               top: 5,
               child: Badge(
-      
                 label: Text(cart.items.length.toString()),
               ),
             ),
@@ -90,9 +93,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(35)),
-          color: Colors.white,
+        decoration:  BoxDecoration(
+          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(35)),
+          color: Theme.of(context).colorScheme.background,
         ),
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 25),

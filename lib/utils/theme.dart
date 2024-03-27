@@ -37,7 +37,7 @@ ThemeData darkMode = ThemeData(
       seedColor: const Color(0xFF031022),
       onBackground: const Color(0xFF031022),
       secondary: const Color(0xFFF64735),
-      background: Colors.black,
+      background: Colors.black54,
     ),
 
 

@@ -7,6 +7,7 @@ class Fruit {
     required this.pricePerKilogram,
     required this.description,
     required this.count,
+    required this.rating,
   });
 
   final int calories;
@@ -16,6 +17,7 @@ class Fruit {
   final String image;
   final String name;
   final double pricePerKilogram;
+  final double rating;
 
   void setCount(int countValue) {
     count = countValue;
@@ -32,6 +34,7 @@ List<Fruit> fruits = [
     pricePerKilogram: 2.5,
     description:
         "Apples are one of the healthiest fruits, rich in fiber and vitamin C.",
+    rating: 4.5,
   ),
   Fruit(
     id: 1,
@@ -42,6 +45,7 @@ List<Fruit> fruits = [
     pricePerKilogram: 1.8,
     description:
         "Bananas are a great source of potassium and provide quick energy.",
+    rating: 4.2,
   ),
   Fruit(
     id: 2,
@@ -52,6 +56,7 @@ List<Fruit> fruits = [
     pricePerKilogram: 1.8,
     description:
         "Oranges are famous for their high vitamin C content and refreshing taste.",
+    rating: 4.0,
   ),
   Fruit(
     id: 3,
@@ -62,6 +67,7 @@ List<Fruit> fruits = [
     pricePerKilogram: 1.8,
     description:
         "Peaches are sweet, juicy fruits that are low in calories and rich in vitamins A and C.",
+    rating: 4.1,
   ),
   Fruit(
     id: 4,
@@ -72,6 +78,7 @@ List<Fruit> fruits = [
     pricePerKilogram: 1.8,
     description:
         "Pineapples are tropical fruits known for their sweet and tangy flavor.",
+    rating: 4.3,
   ),
   Fruit(
     id: 5,
@@ -82,6 +89,7 @@ List<Fruit> fruits = [
     pricePerKilogram: 1.8,
     description:
         "Grapes are small, juicy fruits that come in various colors and are packed with antioxidants.",
+    rating: 4.4,
   ),
   Fruit(
     id: 6,
@@ -92,6 +100,7 @@ List<Fruit> fruits = [
     pricePerKilogram: 1.8,
     description:
         "Kiwis are small fruits with a fuzzy brown exterior and bright green flesh. They are rich in vitamin C and dietary fiber.",
+    rating: 4.2,
   ),
   Fruit(
     id: 7,
@@ -102,5 +111,6 @@ List<Fruit> fruits = [
     pricePerKilogram: 1.8,
     description:
         "Watermelons are large, juicy fruits with a high water content. They are refreshing and low in calories.",
+    rating: 4.6,
   ),
 ];
